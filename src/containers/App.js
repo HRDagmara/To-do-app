@@ -1,6 +1,9 @@
 import React from 'react';
-import uuid from 'uuid';
 import style from './App.css';
+import Title from './components/Title.js';
+import TodoList from './components/TodoList.js';
+import uuid from 'uuid';
+import {hot} from 'react-hot-loader';
 
 class App extends React.Component {
     constructor(props) {
@@ -12,7 +15,7 @@ class App extends React.Component {
     addTodo(val) {
         const todo = {
             text: val,
-            id: uuid.v4(),
+            id: uuid.v4()
         };
         const data = [...this.state.data, todo];
         this.setState({data});
@@ -24,10 +27,13 @@ class App extends React.Component {
     render() {
         return (
             <div className={style.TodoApp}>
-                Tutaj pojawia sie komponenty aplikacji.
+                <h1 className={Title}></h1>
+                <p>
+                    <ul className={TodoList}></ul>
+                </p>
             </div>
         );
     }
 }
 
-export default App;
+export default hot(module)(App);
